@@ -51,10 +51,12 @@
     <version>5.7.0</version>
 </dependency>
   </dependencies>
+  
+  
+  
   <profiles>
 	  <profile>
 		  <id>CheckingMaven</id>
-	 
   <build>
 	  <pluginManagement>
 		  <plugins>
@@ -68,6 +70,9 @@
           </suiteXmlFiles>
         </configuration>
       </plugin>
+      
+      
+      
         <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
