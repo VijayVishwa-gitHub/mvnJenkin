@@ -4,8 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
@@ -21,10 +23,19 @@ public class mvnTesting {
 		prop.load(src);
 		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
 		
-		if(browserName.equalsIgnoreCase("chrome")) {
+		if(browserName.contains("chrome")) {
+			ChromeOptions options = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-		}
+			
+			if(browserName.contains("headless")) {
+				options.addArguments("--headless");
+				//driver = new ChromeDriver(options);
+				}
+			driver=new ChromeDriver(options);
+			
+			}
+		
+			
 		else if(browserName.equalsIgnoreCase("edge")) {
 	WebDriverManager.edgedriver().setup();
 	driver = new EdgeDriver();
